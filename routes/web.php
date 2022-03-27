@@ -22,3 +22,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+//Admin Dashboard Route without admin group
+Route::get('admin/dashboard','App\Http\Controllers\Admin\AdminController@dashboard');
