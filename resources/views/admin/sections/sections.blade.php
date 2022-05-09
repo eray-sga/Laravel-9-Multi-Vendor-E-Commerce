@@ -7,7 +7,14 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Sections</h4>
-
+                            @if (Session::has('success_message'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>Success: </strong> {{ Session::get('success_message') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
                             <div class="table-responsive pt-3">
                                 <table id="sections" class="table table-bordered">
                                     <thead>
@@ -27,10 +34,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @php $no=0; @endphp
                                         @foreach ($sections as $section)    
+                                        @php $no++; @endphp
                                         <tr>
                                             <td>
-                                                {{$section['id']}}
+                                                {{$no}}
                                             </td>
                                             <td>
                                                 {{$section['name']}}
@@ -45,7 +54,7 @@
                                             </td>
                                             <td>
                                                 <a href="{{url('admin/add-edit-section/'.$section['id']) }}"><i style="font-size: 25px" class="mdi mdi-pencil-box"></i></a>
-                                                <a href="{{url('admin/delete-section/'.$section['id']) }}"><i style="font-size: 25px" class="mdi mdi-file-excel-box"></i></a>
+                                                <a href="javascript:void(0)" class="confirmDelete" module="section" moduleid="{{$section['id']}}"><i style="font-size: 25px" class="mdi mdi-file-excel-box"></i></a>
                                             </td>
                                         </tr>
                                         @endforeach

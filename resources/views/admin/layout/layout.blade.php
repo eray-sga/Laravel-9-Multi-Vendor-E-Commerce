@@ -67,7 +67,7 @@
   <!-- Custom Admin JS -->
   <script src="{{url('admin/js/custom.js')}}"></script>
   <!-- End Custom Admin JS -->
-
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
