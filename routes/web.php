@@ -45,8 +45,20 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
 
         //View admins / subadmins / vendors
         Route::get('admins/{type?}','AdminController@admins');
+
+        //View Vendor Details
+        Route::get('view-vendor-details/{id}','AdminController@viewVendorDetails');
+
+        //update admin status
+        Route::post('update-admin-status','AdminController@updateAdminStatus');
+
         //Admin logout
         Route::get('logout', 'AdminController@logout');
+
+        //Sections
+        Route::get('sections','SectionController@sections');
+        //update section status
+        Route::post('update-section-status','SectionController@updateSectionStatus');
     });
 
 });
